@@ -7,7 +7,8 @@
         </div>
         <div class="col-lg-4">
         <% branches.forEach(function(branch){ %>
-            <%= branch.name %>
+            <div className="row">
+            <%= branch.name %> <span class="badge pull-right">Joins: <%= branch.joins.length %></span>
             <br/>
             <%= branch.info %>
             <br/>
