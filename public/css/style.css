@@ -9,7 +9,6 @@ body {
     height: 80vh;
 }
 
-
 .label {
     text-align: right;
     font-weight: bold;
@@ -19,4 +18,8 @@ body {
 
 .row {
     padding-bottom: 10px
+}
+
+.needed {
+    color: red;
 }

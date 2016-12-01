@@ -19,7 +19,6 @@
     </div>
 </div>
         <script>
-        $('.selectpicker').selectpicker({ });
 
         function initMap() {
   var berlin = {lat: 52.52437, lng: 13.41053};
@@ -33,52 +32,44 @@
 
 
   var contentString<%= i %>  = '<div>'+
-      '<h1><%= branch.name %> </h1>'+
-      '<div>'+
-      '<p><%= branch.info %></p>'+
-      '</div>'+
-      '<div>'+
-      '<p>Opening Hours: <%= branch.openinghours %></p>' +
-      '</div>'+
-      '<div>'+
-      '<p>Address: <%= branch.address %></p>'+
-      '<form action="/join/<%= branch._id %>" method="POST">'+ 
-      '<div class="row">' + 
+    '<h1><%= branch.name %> </h1>'+
+    '<div>'+
+    '<p><%= branch.info %></p>'+
+    '</div>'+
+    '<div>'+
+    '<p>Opening Hours: <%= branch.openinghours %></p>' +
+    '</div>'+
+    '<div>'+
+    '<p>Address: <%= branch.address %></p>'+
+    '<form action="/join/<%= branch._id %>" method="POST">'+ 
+    '<div class="row">' + 
     '<div class="form-group">'+ 
-    '<label for="name" class="col-sm-3 control-label">Name</label>'+ 
-    '<div class="col-sm-9">'+
-    '<input type="text" class="form-control" name="join[name]" id="name" placeholder="name">'+
+    '<label for="name" class="col-sm-2 control-label">Name<span class="needed">*</span></label>'+ 
+    '<div class="col-sm-10">'+
+    '<input type="text" class="form-control" name="join[name]" id="name" placeholder="Max M.(Mustermann)">'+
     '</div>'+
     '</div>'+
     '</div>'+
     '<div class="row">' + 
     '<div class="form-group">'+ 
-    '<label for="mail" class="col-sm-3 control-label">mail</label>'+ 
-    '<div class="col-sm-9">'+
-'<div class="input-group">'+
-'<input type="text" class="form-control" name="join[mail]" id="mail" placeholder="mail">'+
-'<span class="input-group-btn">'+
-'<select class="selectpicker" id="mail-privacy" name="join[mail-privacy]">'+
-'<option>admins</option>'+
-'<option>everyone</option>'+
-'</select>'+
-'</span>'+
-'</div>'+
+    '<label for="mail" class="col-sm-2 control-label">Mail<span class="needed">*</span></label>'+ 
+    '<div class="col-sm-10">'+
+    '<input type="text" class="form-control" name="join[mail]" id="mail" placeholder="mail@mail.de">'+
+    '</div>'+
+    '</div>'+ 
+    '</div>'+
+    '<div class="row">' + 
+    '<div class="form-group">'+ 
+    '<label for="note" class="col-sm-2 control-label">note </label>'+ 
+    '<div class="col-sm-10">'+
+    '<input type="text" class="form-control" name="join[note]" id="note" placeholder="For example I arrive at 14:00">'+
     '</div>'+
     '</div>'+
     '</div>'+
     '<div class="row">' + 
     '<div class="form-group">'+ 
-    '<label for="note" class="col-sm-3 control-label">note</label>'+ 
-    '<div class="col-sm-9">'+
-    '<input type="text" class="form-control" name="join[note]" id="note" placeholder="note">'+
-    '</div>'+
-    '</div>'+
-    '</div>'+
-    '<div class="row">' + 
-    '<div class="form-group">'+ 
-    '<label for="phone" class="col-sm-3 control-label">phone</label>'+ 
-    '<div class="col-sm-9">'+
+    '<label for="phone" class="col-sm-2 control-label">phone</label>'+ 
+    '<div class="col-sm-10">'+
     '<input type="text" class="form-control" name="join[phone]" id="phone" placeholder="phone">'+
     '</div>'+
     '</div>'+
@@ -87,6 +78,7 @@
     '<button type="submit" class="btn btn-primary">Submit</button>'+
     '</div>'+
     '</form>'+
+    '<p class="text-info">All Info entered except your name and note is only visible for our Admins </p>' +
     '</div>'+
     '</div>';
 
@@ -97,7 +89,7 @@
   var marker<%= i %> = new google.maps.Marker({
     position: {lat: <%= branch.lat %>, lng: <%= branch.lng %> },
     map: map,
-    label: "0",
+    label: "<%= branch.joins.length %>",
     title: '<%= branch.name %>'
   });
   marker<%= i %>.addListener('click', function() {
@@ -105,6 +97,7 @@
   });
   <% }); %>
 
-}</script>
+}
+</script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWRyaefy6LW-MM_AZLECnOTPPCFDLK0ZE&signed_in=true&callback=initMap"></script>
 <% include partials/footer %>
