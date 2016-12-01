@@ -88,8 +88,11 @@ function fillInAddress() {
   document.getElementById("lat").value = place.geometry.location.lat();
   document.getElementById("name").value = place.name;
   document.getElementById("address").value = place.formatted_address;
-  document.getElementById("openinghours").value = place.opening_hours.periods[0].open.hours + ":" + place.opening_hours.periods[0].open.minutes + " - " + place.opening_hours.periods[0].close.hours + ":" + place.opening_hours.periods[0].close.minutes ;
-  
+  if (place.opening_hours) {
+      document.getElementById("openinghours").value = place.opening_hours.periods[0].open.hours + ":" + place.opening_hours.periods[0].open.minutes + " - " + place.opening_hours.periods[0].close.hours + ":" + place.opening_hours.periods[0].close.minutes ;
+    } else {
+        document.getElementById("openinghours").value = 'not know'
+    }  
 }
 function geolocate() {
   if (navigator.geolocation) {

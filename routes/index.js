@@ -33,4 +33,17 @@ router.post("/newBranch", function(req, res) {
 });
 
 
+router.post("/join/:id", function(req, res) {
+    var newJoin = req.body.join;
+    console.log(newJoin)
+    // Branch.create(newBranch, function(err) {
+            //     if (err) {
+            //         console.log(err)
+            //     } else {
+            //         res.redirect("/newBranch")
+            //     }
+            // })
+
+});
+
 module.exports = router;

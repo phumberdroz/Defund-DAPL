@@ -1,26 +1,26 @@
 <% include partials/header %>
 <h2>Hello welcome to your Node, Express Playground</h2>
-
-
-<div class="col-lg-8">
-
- <div id="map"></div>
-
-</div>
-<div class="col-lg-4">
- <% branches.forEach(function(branch){ %>
-                <%= branch.name %>
-                <br/>
-                <%= branch.info %>
-                <br/>
-                <%= branch.address %>
-                <br/>
-                <hr/>
-        <% }); %>
-            
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+            <div id="map"></div>
         </div>
-
+        <div class="col-lg-4">
+        <% branches.forEach(function(branch){ %>
+            <%= branch.name %>
+            <br/>
+            <%= branch.info %>
+            <br/>
+            <%= branch.address %>
+            <br/>
+            <hr/>
+        <% }); %>            
+        </div>
+    </div>
+</div>
         <script>
+        $('.selectpicker').selectpicker({ });
+
         function initMap() {
   var berlin = {lat: 52.52437, lng: 13.41053};
   var map = new google.maps.Map(document.getElementById('map'), {
@@ -28,6 +28,9 @@
     center: berlin
   });
  <% branches.forEach(function(branch,i){ %>
+
+
+
 
   var contentString<%= i %>  = '<div>'+
       '<h1><%= branch.name %> </h1>'+
@@ -39,7 +42,7 @@
       '</div>'+
       '<div>'+
       '<p>Address: <%= branch.address %></p>'+
-      '<form action="/join" method="POST">'+ 
+      '<form action="/join/<%= branch._id %>" method="POST">'+ 
       '<div class="row">' + 
     '<div class="form-group">'+ 
     '<label for="name" class="col-sm-3 control-label">Name</label>'+ 
@@ -52,7 +55,15 @@
     '<div class="form-group">'+ 
     '<label for="mail" class="col-sm-3 control-label">mail</label>'+ 
     '<div class="col-sm-9">'+
-    '<input type="text" class="form-control" name="join[mail]" id="mail" placeholder="mail">'+
+'<div class="input-group">'+
+'<input type="text" class="form-control" name="join[mail]" id="mail" placeholder="mail">'+
+'<span class="input-group-btn">'+
+'<select class="selectpicker" id="mail-privacy" name="join[mail-privacy]">'+
+'<option>admins</option>'+
+'<option>everyone</option>'+
+'</select>'+
+'</span>'+
+'</div>'+
     '</div>'+
     '</div>'+
     '</div>'+
