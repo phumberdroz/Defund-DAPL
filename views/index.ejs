@@ -1,0 +1,99 @@
+<% include partials/header %>
+<h2>Hello welcome to your Node, Express Playground</h2>
+
+
+<div class="col-lg-8">
+
+ <div id="map"></div>
+
+</div>
+<div class="col-lg-4">
+ <% branches.forEach(function(branch){ %>
+                <%= branch.name %>
+                <br/>
+                <%= branch.info %>
+                <br/>
+                <%= branch.address %>
+                <br/>
+                <hr/>
+        <% }); %>
+            
+        </div>
+
+        <script>
+        function initMap() {
+  var berlin = {lat: 52.52437, lng: 13.41053};
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 11,
+    center: berlin
+  });
+ <% branches.forEach(function(branch,i){ %>
+
+  var contentString<%= i %>  = '<div>'+
+      '<h1><%= branch.name %> </h1>'+
+      '<div>'+
+      '<p><%= branch.info %></p>'+
+      '</div>'+
+      '<div>'+
+      '<p>Opening Hours: <%= branch.openinghours %></p>' +
+      '</div>'+
+      '<div>'+
+      '<p>Address: <%= branch.address %></p>'+
+      '<form action="/join" method="POST">'+ 
+      '<div class="row">' + 
+    '<div class="form-group">'+ 
+    '<label for="name" class="col-sm-3 control-label">Name</label>'+ 
+    '<div class="col-sm-9">'+
+    '<input type="text" class="form-control" name="join[name]" id="name" placeholder="name">'+
+    '</div>'+
+    '</div>'+
+    '</div>'+
+    '<div class="row">' + 
+    '<div class="form-group">'+ 
+    '<label for="mail" class="col-sm-3 control-label">mail</label>'+ 
+    '<div class="col-sm-9">'+
+    '<input type="text" class="form-control" name="join[mail]" id="mail" placeholder="mail">'+
+    '</div>'+
+    '</div>'+
+    '</div>'+
+    '<div class="row">' + 
+    '<div class="form-group">'+ 
+    '<label for="note" class="col-sm-3 control-label">note</label>'+ 
+    '<div class="col-sm-9">'+
+    '<input type="text" class="form-control" name="join[note]" id="note" placeholder="note">'+
+    '</div>'+
+    '</div>'+
+    '</div>'+
+    '<div class="row">' + 
+    '<div class="form-group">'+ 
+    '<label for="phone" class="col-sm-3 control-label">phone</label>'+ 
+    '<div class="col-sm-9">'+
+    '<input type="text" class="form-control" name="join[phone]" id="phone" placeholder="phone">'+
+    '</div>'+
+    '</div>'+
+    '</div>'+
+    '<div class="pull-right">'+
+    '<button type="submit" class="btn btn-primary">Submit</button>'+
+    '</div>'+
+    '</form>'+
+    '</div>'+
+    '</div>';
+
+  var infowindow<%= i %> = new google.maps.InfoWindow({
+    content: contentString<%= i %>
+  });
+
+  var marker<%= i %> = new google.maps.Marker({
+    position: {lat: <%= branch.lat %>, lng: <%= branch.lng %> },
+    map: map,
+    label: "0",
+    title: '<%= branch.name %>'
+  });
+  marker<%= i %>.addListener('click', function() {
+    infowindow<%= i %>.open(map, marker<%= i %>);
+  });
+  <% }); %>
+
+}</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWRyaefy6LW-MM_AZLECnOTPPCFDLK0ZE&signed_in=true&callback=initMap"></script>
+<% include partials/footer %>

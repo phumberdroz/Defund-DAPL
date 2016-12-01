@@ -1,0 +1,22 @@
+html,
+body {
+    height: 100%;
+}
+
+#map {
+    margin: 0;
+    padding: 0;
+    height: 80vh;
+}
+
+
+.label {
+    text-align: right;
+    font-weight: bold;
+    width: 100px;
+    color: #303030;
+}
+
+.row {
+    padding-bottom: 10px
+}
