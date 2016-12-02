@@ -4,6 +4,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var mongoose = require("mongoose");
 var bodyParser = require('body-parser');
+var User = require("./models/users");
+var passport = require("passport");
+var LocalStrategy = require("passport-local");
+var cookieParser = require('cookie-parser');
 
 
 // Init
@@ -21,12 +25,31 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+app.use(cookieParser());
+app.use(require("express-session")({
+    secret: "fgdgnlgdfljdfjldgldld",
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+app.use(function(req, res, next) {
+    res.locals.currentUser = req.user;
+    next();
+});
 
 // Routes
 var index = require('./routes/index');
+var auth = require('./routes/auth');
 
 // Routing
 app.use('/', index);
+app.use('/auth', auth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
