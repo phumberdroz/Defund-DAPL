@@ -29,3 +29,185 @@ body {
 .needed {
     color: red;
 }
+
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700');
+
+body{
+	background: #fdfaf9;
+}
+
+p{
+	line-height: 1.6em;
+}
+
+h1,h2,h3,h4,h5,p,div,input,textarea,select{
+	font-family: 'Roboto Slab';
+	font-weight: 300;
+}
+
+#header-info{
+	background: #fff;
+	border-radius: 3px;
+	position: relative;
+	z-index: 15;
+	margin: -100px auto 10px auto;
+	padding: 25px 50px 10px 50px;
+	box-shadow:  0 0 25px rgba(0,0,0,.1);
+}
+
+#header-info h1{
+	margin: 0 0 30px 0;
+}
+
+.navbar-default .navbar-brand, .navbar-default {
+	color: #fff;
+}
+
+#content{
+	margin-bottom: 30px;
+}
+
+#content h1{
+	margin-bottom: 30px;
+}
+
+ol{
+	padding: 0 0 0 20px;
+}
+ol li{
+	margin: 10px 0;
+}
+
+.navbar{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 90px;
+	border: none;
+	z-index: 100;
+	background: none;
+}
+
+.item-button .btn{
+	width: 100%;
+	margin: 10px 0 0 0;
+}
+
+hr{
+	margin: 5px 0;
+	border-top: 2px solid rgba(0,0,0,.1);
+}
+
+.no-gutter-right{
+	padding-right: 0;
+}
+
+.no-gutter-left{
+	padding-left: 0;
+}
+
+.participants{
+	padding: 15px 0 0 10px;
+}
+
+.banner{
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	min-height: 400px;
+	height: 60vh;
+	margin-bottom: 50px;
+	background-image: url('http://i.imgur.com/iaSU1yu.jpg');
+	background-size: cover;
+	background-position: center;
+}
+
+.banner .darken{
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: absolute;
+	z-index: 10;
+	background: rgba(0,0,0,.4);
+}
+
+.item-title{
+	font-weight: 400;
+	color: #00aaff;
+	font-size: 1.1em;
+	margin: 5px 0;
+}
+
+.slogan{
+	text-align: center;
+	color: #fff;
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	left: 50%;
+	z-index: 20;
+	transform: translate(-50%,-50%);
+}
+
+#afterword{
+	margin: 40px auto 60px auto;
+}
+
+.slogan h1{
+	font-size: 3.5em;
+	font-weight: 900;
+}
+
+.slogan h2{
+	font-weight: 900;
+	font-size: 2em;
+}
+
+.badge{
+	padding: 3px 8px 5px 8px;
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: #fff;
+}
+
+.important{
+	background: #ff0;
+}
+
+.video-link{
+	font-size: 1.6em;
+	color: #fff;
+}
+
+.fa-play-circle{
+	font-size: 20px;
+	margin-right: 5px;
+}
+
+
+.slogan h1 a{
+	text-decoration: underline;
+	color: #fff;
+}
+
+.slogan a{
+	color: #fff;
+	text-decoration:	underline:
+}
+
+a{
+	font-weight: 600;
+}
+
+
+#footer{
+	background: #333;
+	color: #fff;
+	width: 100vw;
+	padding: 10px;
+}

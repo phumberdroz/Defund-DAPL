@@ -16,10 +16,9 @@
 </head>
 
 <body>
-<div class="container">
 
 <nav class="navbar navbar-default">
-  <div class="container-fluid">
+  <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -30,11 +29,11 @@
       </button>
       <a class="navbar-brand" href="/">DefundDAPL - Berlin</a>
     </div>
-	
+
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/list">List Overview</a></li>
+        <li><a href="/list">Bank Overview</a></li>
         <% if(currentUser){ %>
        		<% if(currentUser.group === "admin"){ %>
        			<li><a href="/newBranch">New Branch</a></li>
@@ -45,5 +44,16 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-	
+
+
+<div class="container-fluid banner">
+  <div class="darken">
+
+  </div>
+  <div class="slogan">
+    <h2>THIS MONDAY 5th!</h2>
+    <h1>Berlin stands with <a href="https://www.facebook.com/groups/1248721065188084/">#StandingRock</a></h1>
+
+     <a href="https://www.youtube.com/watch?v=-7NJeyLzXjc" class="video-link" target="_blank"><i class="fa fa-play-circle" aria-hidden="true"></i> Watch the video</a>
+  </div>
 </div>
