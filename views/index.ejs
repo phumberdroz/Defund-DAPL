@@ -1,10 +1,10 @@
 <% include partials/header %>
 <div class="container">
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-8 hidden-sm">
             <div id="map"></div>
         </div>
-        <div class="col-lg-4" id="branchList">
+        <div class="col-lg-4 col-sm-12" id="branchList">
         <% branches.forEach(function(branch, i){ %>
             <div className="row">
             <div className="row">
@@ -65,7 +65,7 @@
                                 <div class="form-group">
                                     <label for="mail" class="col-sm-2 control-label">Mail<span class="needed">*</span></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="join[mail]" id="mail" placeholder="mail@mail.de">
+                                        <input type="email" class="form-control" name="join[mail]" id="mail" placeholder="mail@mail.de">
                                     </div>
                                 </div>
                             </div>
@@ -79,7 +79,7 @@
                             </div>
                             <div class="row">
                                 <div class="form-group">
-                                    <label for="phone" class="col-sm-2 control-label">phone</label>
+                                    <label for="tel" class="col-sm-2 control-label">phone</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" name="join[phone]" id="phone" placeholder="phone">
                                     </div>
