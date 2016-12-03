@@ -19,6 +19,30 @@ router.get("/", function(req, res) {
     });
 });
 
+router.get("/list", function(req, res) {
+    if (req.user && req.user.group === "admin") {
+        Branch.find({}).populate("joins").exec(function(err, allBranches) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.render("ListOverview", {
+                    branches: allBranches
+                });
+            }
+        });
+    } else {
+        Branch.find({}).populate("joins", "name note").exec(function(err, allBranches) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.render("ListOverview", {
+                    branches: allBranches
+                });
+            }
+        });
+    }
+});
+
 
 router.post("/join/:id", function(req, res) {
     Branch.findById(req.params.id, function(err, branch) {

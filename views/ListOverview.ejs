@@ -1,2 +1,131 @@
 <% include partials/header %>
+<div class="container">	
+<% branches.forEach(function(branch, i){ %>
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    <div class="pull-right">
+	        <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#joinModal<%= i %>">
+	          Join now!
+	        </button>
+	    </div>
+	    <h3 class="panel-title">
+	    <%= branch.name %>
+	    </h3>
+	    <h5>
+	    	<%= branch.address	 %>
+	    </h5>
+
+	  </div>
+	  <div class="panel-body">
+	    <table class="table table-striped">
+	    <thead>
+	  		<tr>
+	  			<th>Name</th>
+	  			<th>Note</th>
+	  			<% if(currentUser){ %>
+	       			<% if(currentUser.group === "admin"){ %>
+	  					<th>Mail</th>
+	  					<th>Phone</th>
+	  				<% }%>
+	       		<% } %>
+	  			
+	  		</tr>
+	  		</thead>
+	  		<tbody>
+	  		<% branch.joins.forEach(function(join, i){ %>
+	  			<tr>
+	  				<td>
+	  					<%= join.name %>
+	  				</td>
+	  				<td>
+	  					<%= join.note %>
+	  				</td>
+  					<% if(currentUser){ %>
+       					<% if(currentUser.group === "admin"){ %>
+							<td>
+								<%= join.mail %>
+							</td>
+  							<td>
+								<%= join.phone %>
+  							</td>
+  						<% }%>
+       				<% } %>
+	  			</tr>
+	  			<% }); %> 
+
+	  		</tbody>
+	  	</table>
+	  </div>
+	</div>
+
+	<div class="modal fade" id="joinModal<%= i %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"><%= branch.name %> </h4>
+                  </div>
+                  <div class="modal-body">
+                    <div>
+                        <p>
+                            <%= branch.info %>
+                        </p>
+                    </div>
+                    <div>
+                        <p>Opening Hours:
+                            <%= branch.openinghours %>
+                        </p>
+                    </div>
+                    <div>
+                        <p>Address:
+                            <%= branch.address %>
+                        </p>
+                        <form action="/join/<%= branch._id %>" method="POST">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="name" class="col-sm-2 control-label">Name<span class="needed">*</span></label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" required="true" name="join[name]" id="name" placeholder="Max M.(Mustermann)">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="mail" class="col-sm-2 control-label">Mail<span class="needed">*</span></label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" required="true" name="join[mail]" id="mail" placeholder="mail@mail.de">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="note" class="col-sm-2 control-label">note </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="join[note]" id="note" placeholder="For example I arrive at 14:00">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="tel" class="col-sm-2 control-label">phone</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="join[phone]" id="phone" placeholder="phone">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pull-right">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <p class="text-info">All Info entered (except your name and note) is only visible for our Admins </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+	<% }); %> 
+</div>
+
 <% include partials/footer %>
