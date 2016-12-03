@@ -9,6 +9,12 @@ body {
     height: 80vh;
 }
 
+#branchList {
+    height: auto;
+    max-height: 80vh;
+    overflow-x: hidden;
+}
+
 .label {
     text-align: right;
     font-weight: bold;
