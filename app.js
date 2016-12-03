@@ -1,15 +1,3 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var mongoose = require("mongoose");
-var bodyParser = require('body-parser');
-var User = require("./models/users");
-var passport = require("passport");
-var LocalStrategy = require("passport-local");
-var cookieParser = require('cookie-parser');
-
-
 var pmx = require('pmx').init({
     http: true, // HTTP routes logging (default: false)
     http_latency: 200, // Limit of acceptable latency
@@ -21,6 +9,17 @@ var pmx = require('pmx').init({
     network: true, // Network monitoring at the application level (default: false)
     ports: true // Shows which ports your app is listening on (default: false)
 });
+var express = require('express');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var mongoose = require("mongoose");
+var bodyParser = require('body-parser');
+var User = require("./models/users");
+var passport = require("passport");
+var LocalStrategy = require("passport-local");
+var cookieParser = require('cookie-parser');
+
 // Init
 var app = express();
 mongoose.connect("mongodb://localhost/defund_dapl");
