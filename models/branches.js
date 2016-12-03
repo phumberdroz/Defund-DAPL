@@ -2,8 +2,16 @@ var mongoose = require("mongoose");
 
 var BranchSchema = mongoose.Schema({
     name: String,
-    lat: String,
-    lng: String,
+    lat: {
+        type: String,
+        unique: true,
+        dropDups: true
+    },
+    lng: {
+        type: String,
+        unique: true,
+        dropDups: true
+    },
     address: String,
     openinghours: String,
     info: String,
