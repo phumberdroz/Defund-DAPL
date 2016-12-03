@@ -3,6 +3,41 @@ body {
     height: 100%;
 }
 
+body{
+	background: #fdfaf9;
+}
+
+h1,h2,h3,h4,h5,p,div,input,textarea,select{
+	font-family: 'Roboto Slab';
+	font-weight: 300;
+}
+
+p{
+	line-height: 1.6em;
+}
+
+a{
+	font-weight: 600;
+}
+
+ol{
+	padding: 0 0 0 20px;
+}
+
+ol li{
+	margin: 10px 0;
+}
+
+.slogan h1 a{
+	text-decoration: underline;
+	color: #fff;
+}
+
+.slogan a{
+	color: #fff;
+	text-decoration:	underline:
+}
+
 #map {
     margin: 0;
     padding: 0;
@@ -28,22 +63,6 @@ body {
 
 .needed {
     color: red;
-}
-
-
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700');
-
-body{
-	background: #fdfaf9;
-}
-
-p{
-	line-height: 1.6em;
-}
-
-h1,h2,h3,h4,h5,p,div,input,textarea,select{
-	font-family: 'Roboto Slab';
-	font-weight: 300;
 }
 
 #header-info{
@@ -72,12 +91,6 @@ h1,h2,h3,h4,h5,p,div,input,textarea,select{
 	margin-bottom: 30px;
 }
 
-ol{
-	padding: 0 0 0 20px;
-}
-ol li{
-	margin: 10px 0;
-}
 
 .navbar{
 	position: absolute;
@@ -187,21 +200,6 @@ hr{
 .fa-play-circle{
 	font-size: 20px;
 	margin-right: 5px;
-}
-
-
-.slogan h1 a{
-	text-decoration: underline;
-	color: #fff;
-}
-
-.slogan a{
-	color: #fff;
-	text-decoration:	underline:
-}
-
-a{
-	font-weight: 600;
 }
 
 
