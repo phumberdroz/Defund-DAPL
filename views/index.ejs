@@ -173,7 +173,6 @@
       </div>
     </div>
 
-
     </div>
 
     <script>
@@ -182,12 +181,10 @@
       var berlin = {lat: 52.52437, lng: 13.41053};
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 11,
+        scrollwheel: false,
         center: berlin
       });
       <% branches.forEach(function(branch,i){ %>
-
-
-
 
         var contentString<%= i %>  = '<div>'+
         '<h1><%= branch.name %> </h1>'+
