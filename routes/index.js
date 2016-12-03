@@ -4,6 +4,7 @@ var router = express.Router({
 });
 var Branch = require("../models/branches");
 var Join = require("../models/joins");
+var Middleware = require("../middleware/index");
 
 /* GET home page. */
 router.get("/", function(req, res) {
@@ -16,21 +17,6 @@ router.get("/", function(req, res) {
             });
         }
     });
-});
-
-router.get("/newBranch", function(req, res) {
-    res.render("newBranch");
-});
-router.post("/newBranch", function(req, res) {
-    var newBranch = req.body.branch;
-    console.log(newBranch)
-    Branch.create(newBranch, function(err) {
-        if (err) {
-            console.log(err)
-        } else {
-            res.redirect("/newBranch")
-        }
-    })
 });
 
 
@@ -55,6 +41,22 @@ router.post("/join/:id", function(req, res) {
         }
     });
 
+});
+
+router.get("/newBranch", Middleware.isLoggedIn, function(req, res) {
+    res.render("newBranch");
+});
+
+router.post("/newBranch", Middleware.isLoggedIn, function(req, res) {
+    var newBranch = req.body.branch;
+    console.log(newBranch)
+    Branch.create(newBranch, function(err) {
+        if (err) {
+            console.log(err)
+        } else {
+            res.redirect("/newBranch")
+        }
+    })
 });
 
 module.exports = router;
