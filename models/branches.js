@@ -12,6 +12,10 @@ var BranchSchema = mongoose.Schema({
         unique: true,
         dropDups: true
     },
+    hidden: {
+        type: String,
+        default: false
+    },
     address: String,
     openinghours: String,
     info: String,

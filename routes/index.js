@@ -8,7 +8,7 @@ var Middleware = require("../middleware/index");
 
 /* GET home page. */
 router.get("/", function(req, res) {
-    Branch.find({}).exec(function(err, allBranches) {
+    Branch.find({ "hidden": false }).exec(function(err, allBranches) {
         if (err) {
             console.log(err);
         } else {
@@ -31,7 +31,7 @@ router.get("/list", function(req, res) {
             }
         });
     } else {
-        Branch.find({}).populate("joins", "name note").exec(function(err, allBranches) {
+        Branch.find({ "hidden": false }).populate("joins", "name note").exec(function(err, allBranches) {
             if (err) {
                 console.log(err);
             } else {
@@ -82,5 +82,21 @@ router.post("/newBranch", Middleware.isLoggedIn, function(req, res) {
         }
     })
 });
+
+router.get("/newBranch", Middleware.isLoggedIn, function(req, res) {
+    res.render("newBranch");
+});
+
+// router.post("/updateBranch", Middleware.isLoggedIn, function(req, res) {
+//     var newBranch = req.body.branch;
+//     console.log(newBranch)
+//     Branch.create(newBranch, function(err) {
+//         if (err) {
+//             console.log(err)
+//         } else {
+//             res.redirect("/newBranch")
+//         }
+//     })
+// });
 
 module.exports = router;
